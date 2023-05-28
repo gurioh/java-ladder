@@ -44,6 +44,5 @@ public class ResultView {
         showContentsCarriageReturn(results.stream()
                 .map(result->ViewUtil.adjustGap(result.value()))
                 .collect(Collectors.joining()));
-//        results.forEach(result -> showContentsNoCarriageReturn(result.value()));
     }
 }

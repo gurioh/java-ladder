@@ -16,8 +16,7 @@ class LadderGameTest {
     void setUp() {
         String[] names = {"1","2","3"};
         String[] results = {"1","2","3"};
-        int height = 1;
-        ladderGame = new LadderGame(names,results,height);
+        ladderGame = new LadderGame(names,results);
 
     }
 

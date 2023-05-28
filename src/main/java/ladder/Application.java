@@ -1,5 +1,9 @@
 package ladder;
 
+import ladder.model.Ladder;
+import ladder.model.Players;
+import ladder.model.Result;
+import ladder.model.Results;
 import ladder.service.LadderGame;
 import ladder.common.InputMessages;
 import ladder.util.StringParseUtil;
@@ -10,13 +14,13 @@ import static ladder.service.LadderGame.COMMA;
 
 public class Application {
     public static void main(String[] args) {
-        LadderGame ladderGame = new LadderGame(
-                StringParseUtil.splitString(InputView.showMessage(InputMessages.PLAYER_NAMES_QUESTION), COMMA),
-                StringParseUtil.splitString(InputView.showMessage(InputMessages.RUN_RESULT_QUESTION), COMMA),
-                StringParseUtil.parseToInt(InputView.showMessage(InputMessages.MAXIMUM_LADDER_HEIGHT_QUESTION))
-        );
 
-        ladderGame.makeLine();
+        Players players = Players.of(StringParseUtil.splitString(InputView.showMessage(InputMessages.PLAYER_NAMES_QUESTION), COMMA));
+        Results results = Results.of(StringParseUtil.splitString(InputView.showMessage(InputMessages.RUN_RESULT_QUESTION), COMMA));
+        LadderGame ladderGame = LadderGame.of(
+                players,
+                Ladder.of(players.size(),StringParseUtil.parseToInt(InputView.showMessage(InputMessages.MAXIMUM_LADDER_HEIGHT_QUESTION))),
+                results);
 
         ResultView.showResultHeader();
         ResultView.showPlayers(ladderGame.getPlayers());

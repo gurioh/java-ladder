@@ -9,6 +9,15 @@ public class Ladder {
 
     public Ladder() {}
 
+    public Ladder(List<Line> lines) { this.lines = lines;}
+
+    public static Ladder of(int size, int height){
+        List<Line> lines = new ArrayList<>();
+        for (int i = 0; i < height; i++) {
+            lines.add(new Line(size));
+        }
+        return new Ladder(lines);
+    }
     public void makeLine(int size, int height) {
         for (int i = 0; i < height; i++) {
             lines.add(new Line(size));
